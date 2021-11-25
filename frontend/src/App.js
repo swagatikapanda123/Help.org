@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
@@ -11,6 +11,9 @@ import UserListScreen from './Screens/UserListScreen'
 import UserEditScreen from './Screens/UserEditScreen'
 import ContactScreen from './Screens/ContactScreen'
 import AboutScreen from './Screens/AboutScreen'
+import BlogScreen from './Screens/BlogScreen'
+import WorkshopScreen from './Screens/WorkshopScreen'
+import PageNotFound from './Screens/PageNotFound'
 
 function App() {
   return (
@@ -18,14 +21,19 @@ function App() {
       <Header />
       <main>
         <Container>
-          <Route path='/' component={HomeScreen} exact />
-          <Route path='/work/:id' component={WorkScreen} />
-          <Route path='/login' component={LoginScreen} />
-          <Route path='/register' component={RegisterScreen} />
-          <Route path='/admin/userlist' component={UserListScreen} />
-          <Route path='/admin/user/:id/edit' component={UserEditScreen} />
-          <Route path='/contact' component={ContactScreen} />
-          <Route path='/about' component={AboutScreen} />
+          <Switch>
+            <Route path='/' component={HomeScreen} exact />
+            <Route path='/work/:id' component={WorkScreen} />
+            <Route path='/login' component={LoginScreen} />
+            <Route path='/register' component={RegisterScreen} />
+            <Route path='/admin/userlist' component={UserListScreen} />
+            <Route path='/admin/user/:id/edit' component={UserEditScreen} />
+            <Route path='/contact' component={ContactScreen} />
+            <Route path='/about' component={AboutScreen} />
+            <Route path='/blogs' component={BlogScreen} />
+            <Route component={PageNotFound} />
+            <Route path='/workshop' component={WorkshopScreen} />
+          </Switch>
         </Container>
       </main>
       <Footer />
